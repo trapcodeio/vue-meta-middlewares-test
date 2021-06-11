@@ -1,16 +1,19 @@
 import {createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw} from 'vue-router'
 import Default from '@/layouts/Default.vue'
 
-/**
- * Custom Types
- */
+// Context of your middle functions
 type MetaMiddlewareContext = {
     to: RouteLocationNormalized,
     from: RouteLocationNormalized,
     next: NavigationGuardNext;
 }
 
-type MetaMiddlewares = ((ctx: MetaMiddlewareContext) => any | void)[]
+// Middleware Function
+type MetaMiddlewareFn = ((ctx: MetaMiddlewareContext) => any | void);
+
+// Array of middleware functions
+type MetaMiddlewares = MetaMiddlewareFn[]
+
 
 const routes: Array<RouteRecordRaw> = [
     {
